@@ -43,7 +43,7 @@ docker build -t puska-farm-dwh .
 
 To deploy new services, run:
 
-**Bash**
+**Docker**
 ```sh
 docker run \
     -e POSTGRES_PASSWORD=puska \
@@ -52,18 +52,6 @@ docker run \
     --rm -d \
     --name puska-farm-dwh \
     -p 5601:5432 \
-    puska-farm-dwh:latest
-```
-
-**Powershell**
-```powershell
-docker run `
-    -e POSTGRES_PASSWORD=puska `
-    -e POSTGRES_USER=puska `
-    -e POSTGRES_DB=puska `
-    --rm -d `
-    --name puska-farm-dwh `
-    -p 5601:5432 `
     puska-farm-dwh:latest
 ```
 
