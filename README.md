@@ -13,18 +13,18 @@ Puska Farm - Data Warehouse schema and instance definition. Based on **Postgres*
 Table List
 |Name|Type|Description|
 |:--|:-:|:--|
-|dim_jenis_produk|DIM|Referensi jenis produk peternakan|
-|dim_lokasi|DIM|Referensi lokasi geografis|
-|dim_pengepul|DIM|Referensi informasi pengepul hasil ternak|
-|dim_peternakan|DIM|Referensi peternakan|
-|dim_sumber_pasokan|DIM|Referensi sumber pemasok|
-|dim_unit_peternak|DIM|Referensi lokasi peternakan (unit)|
-|dim_waktu|DIM|Referensi waktu|
-|fact_distribusi|FACT|Ringkasan distribusi hasil ternak harian per jenis produk|
-|fact_populasi|FACT|Ringkasan populasi ternak harian per jenis ternak|
-|fact_produksi|FACT|Ringkasan produksi hasil tenrak harian per jenis produk|
-|log_stream|LOG|Riwayat dan metadata pemrosesan stream|
-|log_batch|LOG|Riwayat dan metadata pemrosesan batch|
+|dim_jenis_produk|DIM|Reference for product types|
+|dim_lokasi|DIM|References for geolocation|
+|dim_pengepul|DIM|Reference for collector|
+|dim_peternakan|DIM|Reference for farms group|
+|dim_sumber_pasokan|DIM|Reference for supplier|
+|dim_unit_peternak|DIM|Reference for farm units|
+|dim_waktu|DIM|Reference for time|
+|fact_distribusi|FACT|Daily summary of farm product distribution|
+|fact_populasi|FACT|Daily summary of farm livestocks population|
+|fact_produksi|FACT|Daily summary of farm product productions|
+|log_stream|LOG|Logging for stream ETL|
+|log_batch|LOG|Logging for batch ETL|
 
 
 ## Deployment
