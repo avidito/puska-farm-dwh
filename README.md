@@ -1,7 +1,7 @@
 # Puska Farm - Data Warehouse
 
 ## Description
-Puska Farm - Data Warehouse schema and instance definition. Based on **Postgres** database with **Galaxy Schema**. Deployed as containerized application. Data seeds are produced from **Puska Apps** database (only for dimensions and injected data). Seed are included as [query](./query/seed/) and as [CSV data](./src/postgres/seed/).
+Puska Farm - Data Warehouse schema and instance definition. Based on **Postgres** database with **Galaxy Schema**. Deployed as containerized application. Data seeds are produced from **Puska Apps** database (only for dimensions and injected data). Seed are included as [query](./query/seed/) and as [CSV data](./src/seed/).
 
 ## Related Project
 1. Puska Farm - ETL
