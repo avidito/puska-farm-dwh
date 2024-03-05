@@ -61,7 +61,7 @@ version: "3"
 services:
     db-dwh:
         build:
-            context: ./puska-farm-dwh/src/postgres
+            context: ./src
         environment:
             - POSTGRES_PASSWORD=${DWH_DB_PASSWORD:-puska}
             - POSTGRES_USER=${DWH_DB_USER:-puska}
