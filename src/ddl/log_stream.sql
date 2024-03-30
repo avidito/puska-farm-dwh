@@ -1,8 +1,11 @@
 CREATE TABLE log_stream (
     table_name VARCHAR(100),
-    mode VARCHAR(100),
-    payload VARCHAR(255),
+    source_table VARCHAR(100),
+    action VARCHAR(100),
+    payload TEXT,
     start_tm TIMESTAMP,
     end_tm TIMESTAMP,
-    duration INTEGER
+    duration FLOAT,
+    created_dt TIMESTAMP,
+    modified_dt TIMESTAMP
 );

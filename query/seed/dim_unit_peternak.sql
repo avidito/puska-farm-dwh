@@ -1,6 +1,6 @@
 SELECT
   id,
-  kelurahan_id AS id_lokasi,
+  kecamatan_id::INTEGER AS id_lokasi,
   nama_unit,
   alamat,
   NULL AS longitude,
