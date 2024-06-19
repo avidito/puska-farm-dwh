@@ -18,7 +18,7 @@ Table List
 |dim_pengepul|DIM|Reference for collector|
 |dim_peternakan|DIM|Reference for farms group|
 |dim_sumber_pasokan|DIM|Reference for supplier|
-|dim_unit_peternak|DIM|Reference for farm units|
+|dim_unit_peternakan|DIM|Reference for farm units|
 |dim_waktu|DIM|Reference for time|
 |fact_distribusi|FACT|Daily summary of farm product distribution|
 |fact_populasi|FACT|Daily summary of farm livestocks population|
