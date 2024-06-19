@@ -1,8 +1,0 @@
-'id';'nama_produk';'kategori_produk';'satuan'
-1;Daging Ternak;ternak;kg
-2;Ternak Potong;ternak;ekor
-3;Susu Segar;susu;liter
-4;Susu Pasteurisasi;susu;liter
-5;Susu Kefir;susu;liter
-6;Yogurt;susu;liter
-7;Keju;susu;kg
