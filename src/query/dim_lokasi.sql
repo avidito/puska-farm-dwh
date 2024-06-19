@@ -23,11 +23,7 @@ cte_kabupaten_kota AS (
       w.kode,
       SPLIT_PART(w.kode, '.', 1) AS prov_kode,
       SPLIT_PART(w.kode, '.', 2) AS kabkota_kode,
-<<<<<<<< HEAD:query/seed/dim_lokasi.sql
-      REPLACE(REGEXP_REPLACE(w.nama, '(KAB.|KOTA) ', ''), 'ADM. ', '') AS kabupaten_kota
-========
       REPLACE(REGEXP_REPLACE(w.nama, 'KAB\.{0,1} ', ''), 'ADM. ', '') AS kabupaten_kota
->>>>>>>> 68ae297 (feat: init geom sequence):src/query/dim_lokasi.sql
     FROM wilayah AS w
     WHERE LENGTH(REGEXP_REPLACE(kode, '[^.]', '', 'g')) = 1
   ) AS kk
@@ -58,23 +54,13 @@ cte_kecamatan AS (
     LEFT JOIN cte_kabupaten_kota AS kk
       ON ke.prov_kode = kk.prov_kode
       AND ke.kabkota_kode = kk.kabkota_kode
-)
-SELECT
-  ud.id,
-  ud.provinsi,
-  ud.kabupaten_kota,
-  ud.kecamatan
-FROM (
+),
+cte_union AS (
   SELECT id, provinsi, kabupaten_kota, kecamatan FROM cte_provinsi
-  UNION ALL 
+  UNION ALL
   SELECT id, provinsi, kabupaten_kota, kecamatan FROM cte_kabupaten_kota
   UNION ALL
   SELECT id, provinsi, kabupaten_kota, kecamatan FROM cte_kecamatan
-<<<<<<<< HEAD:query/seed/dim_lokasi.sql
-) AS ud
-UNION ALL
-SELECT 999 AS id, '' AS provinsi, '' AS kabupaten_kota, '' AS kecamatan;
-========
 ),
 cte_summary AS (
   SELECT
@@ -94,4 +80,3 @@ cte_summary AS (
   FROM cte_union
 )
 SELECT * FROM cte_summary ORDER BY 1;
->>>>>>>> 68ae297 (feat: init geom sequence):src/query/dim_lokasi.sql
