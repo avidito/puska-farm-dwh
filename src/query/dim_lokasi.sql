@@ -15,10 +15,7 @@ cte_kabupaten_kota AS (
     kk.prov_kode,
     kk.kabkota_kode,
     p.provinsi,
-    (CASE
-      WHEN kk.kabupaten_kota = 'KEP. SERIBU' THEN 'KEPULAUAN SERIBU'
-      ELSE kk.kabupaten_kota
-    END) AS kabupaten_kota,
+    REPLACE(kk.kabupaten_kota, 'KEP.', 'KEPULAUAN') AS kabupaten_kota,
     NULL AS kecamatan
   FROM (
     SELECT
@@ -26,7 +23,11 @@ cte_kabupaten_kota AS (
       w.kode,
       SPLIT_PART(w.kode, '.', 1) AS prov_kode,
       SPLIT_PART(w.kode, '.', 2) AS kabkota_kode,
+<<<<<<<< HEAD:query/seed/dim_lokasi.sql
       REPLACE(REGEXP_REPLACE(w.nama, '(KAB.|KOTA) ', ''), 'ADM. ', '') AS kabupaten_kota
+========
+      REPLACE(REGEXP_REPLACE(w.nama, 'KAB\.{0,1} ', ''), 'ADM. ', '') AS kabupaten_kota
+>>>>>>>> 68ae297 (feat: init geom sequence):src/query/dim_lokasi.sql
     FROM wilayah AS w
     WHERE LENGTH(REGEXP_REPLACE(kode, '[^.]', '', 'g')) = 1
   ) AS kk
@@ -69,6 +70,28 @@ FROM (
   SELECT id, provinsi, kabupaten_kota, kecamatan FROM cte_kabupaten_kota
   UNION ALL
   SELECT id, provinsi, kabupaten_kota, kecamatan FROM cte_kecamatan
+<<<<<<<< HEAD:query/seed/dim_lokasi.sql
 ) AS ud
 UNION ALL
 SELECT 999 AS id, '' AS provinsi, '' AS kabupaten_kota, '' AS kecamatan;
+========
+),
+cte_summary AS (
+  SELECT
+    id,
+    provinsi,
+    kabupaten_kota,
+    kecamatan,
+    NULL::VARCHAR AS region
+  FROM cte_union
+  UNION ALL
+  SELECT
+    MAX(id)+1 AS id,
+    NULL::VARCHAR AS provinsi,
+    NULL::VARCHAR AS kabupaten_kota,
+    NULL::VARCHAR AS kecamatan,
+    NULL::VARCHAR AS region
+  FROM cte_union
+)
+SELECT * FROM cte_summary ORDER BY 1;
+>>>>>>>> 68ae297 (feat: init geom sequence):src/query/dim_lokasi.sql

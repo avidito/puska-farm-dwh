@@ -1,6 +1,14 @@
 -- Table
 CREATE TABLE dim_sumber_pasokan (
-    id INT8,
-    nama_sumber_pasokan VARCHAR(100),
-    CONSTRAINT dim_sumber_pasokan_pkey PRIMARY KEY(id)
+  id INT8,
+  nama_sumber_pasokan VARCHAR(100),
+  PRIMARY KEY(id)
+);
+
+COPY dim_sumber_pasokan
+FROM '/seed/csv/dim_sumber_pasokan.csv'
+WITH (
+  FORMAT 'csv',
+  DELIMITER ';',
+  HEADER TRUE
 );

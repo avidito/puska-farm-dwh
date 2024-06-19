@@ -1,6 +1,6 @@
 SELECT
   id,
-  id_unit_ternak AS id_unit_peternak,
+  id_unit_ternak AS id_unit_peternakan,
   nama_mitra AS nama_peternakan,
   nama_pemilik,
   jenkel AS jenis_kelamin,
