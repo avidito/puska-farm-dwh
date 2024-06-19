@@ -8,8 +8,10 @@ do
 done
 
 # Run Process Query
-echo "Running Process Query"
-PRC_GEOM=prc_dim_lokasi_geom.sql
-psql -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -f /src/query/$PRC_GEOM
+echo "Running Process Query - dim_lokasi"
+psql -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -f /src/query/prc_dim_lokasi_geom.sql
+
+echo "Running Process Query - dim_unit_peternakan"
+psql -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -f /src/query/prc_dim_unit_peternakan_coor.sql
 
 echo "Finish"
